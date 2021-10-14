@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<groupHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_329</versionUuid>
+    <group>
+        <name>NAC Administrators</name>
+        <securityMap>SECURITYMAP_TEAM</securityMap>
+        <uuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_327</uuid>
+        <groupTypeUuid>SYSTEM_GROUP_TYPE_CUSTOM</groupTypeUuid>
+        <description>This group contains all the admin users to manage the NAC application.
+Responsibilities:
+Technical admin to receive alerts when there is any process occurred in the application.</description>
+        <delegatedCreation>false</delegatedCreation>
+        <memberPolicy>MEMBERPOLICY_CLOSED</memberPolicy>
+        <viewingPolicy>VIEWINGPOLICY_LOW</viewingPolicy>
+        <attributes/>
+    </group>
+    <members>
+        <users/>
+        <groups/>
+    </members>
+    <admins>
+        <users>
+            <userUuid>chandhini.r@scadea.com</userUuid>
+        </users>
+        <groups/>
+    </admins>
+    <ruleSet/>
+    <history>
+        <historyInfo versionUuid="_e-0000e6eb-1acd-8000-9b2e-01075c01075c_329"/>
+    </history>
+</groupHaul>

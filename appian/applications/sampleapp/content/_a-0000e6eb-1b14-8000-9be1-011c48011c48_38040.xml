@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38054</versionUuid>
+    <rule>
+        <name>NAC_uiReviewerScreen</name>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38040</uuid>
+        <description>UI for Reviewer</description>
+        <parentUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37934</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_formLayout_v1"(
+  label: "Review Proposal",
+  contents: {
+   
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Section",
+      contents: {
+        #"SYSTEM_SYSRULES_dropdownField_v1"(
+          label:"Take Action",
+          placeholder: "-Select-",
+          choiceLabels: {"approved","rejected","rework"},
+          choiceValues: {"approved","rejected","rework"},
+          value:ri!taskAssignment.taskStatus,
+          saveInto: ri!taskAssignment.taskStatus
+        ),
+        #"SYSTEM_SYSRULES_paragraphField"(
+          label:"Comments",
+          value:ri!taskAssignment.comments,
+          saveInto: ri!taskAssignment.comments
+        )
+      }
+    )
+  },
+  buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+    primaryButtons: {
+      #"SYSTEM_SYSRULES_ButtonWidget"(
+        label: "OK",
+        submit: true,
+        style: "PRIMARY"
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>taskAssignment</name>
+            <type>
+                <name>NAC_TaskAssignment</name>
+                <namespace>urn:com:appian:types:NACTaskAssignment</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38054"/>
+    </history>
+</contentHaul>

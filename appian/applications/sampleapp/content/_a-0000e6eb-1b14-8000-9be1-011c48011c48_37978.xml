@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37992</versionUuid>
+    <rule>
+        <name>NAC_uiSponsorScreen</name>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37978</uuid>
+        <description>UI to capture proposal details</description>
+        <parentUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37934</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localVariables(
+  local!employee: a!map(
+    firstName: null,
+    lastName: null,
+    department: null,
+    title: null,
+    phoneNumber: null,
+    startDate: null
+  ),
+  local!currentStep: 1,
+  local!steps: { "Eligbility Criteria", "Review" },
+  local!employees: {
+    a!map(
+      id: 1,
+      firstName: "John",
+      lastName: "Smith",
+      department: "Engineering",
+      title: "Director",
+      phoneNumber: "555-123-4567",
+      startDate: today() - 360
+    ),
+    a!map(
+      id: 2,
+      firstName: "Michael",
+      lastName: "Johnson",
+      department: "Finance",
+      title: "Analyst",
+      phoneNumber: "555-987-6543",
+      startDate: today() - 360
+    ),
+    a!map(
+      id: 3,
+      firstName: "Mary",
+      lastName: "Reed",
+      department: "Engineering",
+      title: "Software Engineer",
+      phoneNumber: "555-456-0123",
+      startDate: today() - 240
+    ),
+    
+  },
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: "Verify Eligibility Criteria",
+    contents: {
+      #"SYSTEM_SYSRULES_sectionLayout_v1"(
+        contents: {
+          #"SYSTEM_SYSRULES_milestoneField"(
+            steps: local!steps,
+            active: local!currentStep
+          )
+        }
+      ),
+      #"SYSTEM_SYSRULES_boxLayout"(
+        label: "KEY INFORMATION",
+        contents: {
+          #"SYSTEM_SYSRULES_columnsLayout"(
+            columns: {
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(label: "KEY INFORMATION"),
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    value: "Display Key Info in read only mode"
+                  )
+                }
+              ),
+              #"SYSTEM_SYSRULES_columnLayout"(contents: {})
+            }
+          ),
+          #"SYSTEM_SYSRULES_richTextDisplayField"()
+        }
+      ),
+      #"SYSTEM_SYSRULES_richTextDisplayField"(),
+      #"SYSTEM_SYSRULES_boxLayout"(
+        label: "CONTACTS",
+        contents: {
+          #"SYSTEM_SYSRULES_gridLayout"(
+            totalCount: count(local!employees),
+            headerCells: {
+              #"SYSTEM_SYSRULES_gridLayoutHeaderCell"(label: "First Name"),
+              #"SYSTEM_SYSRULES_gridLayoutHeaderCell"(label: "Last Name"),
+              #"SYSTEM_SYSRULES_gridLayoutHeaderCell"(label: "Department"),
+              #"SYSTEM_SYSRULES_gridLayoutHeaderCell"(label: "Title"),
+              #"SYSTEM_SYSRULES_gridLayoutHeaderCell"(label: "Phone Number"),
+              #"SYSTEM_SYSRULES_gridLayoutHeaderCell"(label: "Start Date", align: "RIGHT"),
+              /* For the "Remove" column */
+              #"SYSTEM_SYSRULES_gridLayoutHeaderCell"(label: "")
+            },
+            /* Only needed when some columns need to be narrow */
+            columnConfigs: {
+              #"SYSTEM_SYSRULES_gridLayoutColumnConfig"(width: "DISTRIBUTE", weight: 3),
+              #"SYSTEM_SYSRULES_gridLayoutColumnConfig"(width: "DISTRIBUTE", weight: 3),
+              #"SYSTEM_SYSRULES_gridLayoutColumnConfig"(width: "DISTRIBUTE", weight: 3),
+              #"SYSTEM_SYSRULES_gridLayoutColumnConfig"(width: "DISTRIBUTE", weight: 3),
+              #"SYSTEM_SYSRULES_gridLayoutColumnConfig"(width: "DISTRIBUTE", weight: 3),
+              #"SYSTEM_SYSRULES_gridLayoutColumnConfig"(width: "DISTRIBUTE", weight: 2),
+              #"SYSTEM_SYSRULES_gridLayoutColumnConfig"(width: "ICON")
+            },
+            /*
+        * a!forEach() will take local!employee data and used that data to loop through an
+        * expression that creates each row.
+        *
+        * When modifying the recipe to work with your data, you only need to change:
+        * 1.) the number of fields in each row
+        * 2.) the types of fields for each column (i.e. a!textField() for text data elements)
+        * 3.) the fv!item elements. For example fv!item.firstName would change to fv!item.yourdata
+        */
+            rows: #"SYSTEM_SYSRULES_forEach"(
+              items: local!employees,
+              expression: #"SYSTEM_SYSRULES_gridRowLayout"(
+                contents: {
+                  /* For the First Name Column*/
+                  #"SYSTEM_SYSRULES_textField"(
+                    /* Labels are not visible in grid cells but are necessary to meet accessibility requirements */
+                    label: "first name " &amp; fv!index,
+                    value: fv!item.firstName,
+                    saveInto: fv!item.firstName,
+                    required: true
+                  ),
+                  /* For the Last Name Column*/
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "last name " &amp; fv!index,
+                    value: fv!item.lastName,
+                    saveInto: fv!item.lastName,
+                    required: true
+                  ),
+                  /* For the Department Column*/
+                  #"SYSTEM_SYSRULES_dropdownField_v1"(
+                    label: "department " &amp; fv!index,
+                    placeholder: "-- Select -- ",
+                    choiceLabels: {
+                      "Corporate",
+                      "Engineering",
+                      "Finance",
+                      "Human Resources",
+                      "Professional Services",
+                      "Sales"
+                    },
+                    choiceValues: {
+                      "Corporate",
+                      "Engineering",
+                      "Finance",
+                      "Human Resources",
+                      "Professional Services",
+                      "Sales"
+                    },
+                    value: fv!item.department,
+                    saveInto: fv!item.department,
+                    required: true
+                  ),
+                  /* For the Title Column*/
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "title " &amp; fv!index,
+                    value: fv!item.title,
+                    saveInto: fv!item.title,
+                    required: true
+                  ),
+                  /* For the Phone Number Column*/
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "phone number " &amp; fv!index,
+                    placeholder: "555-456-7890",
+                    value: fv!item.phoneNumber,
+                    saveInto: fv!item.phoneNumber
+                  ),
+                  /* For the Start Date Column*/
+                  #"SYSTEM_SYSRULES_dateField"(
+                    label: "start date " &amp; fv!index,
+                    value: fv!item.startDate,
+                    saveInto: fv!item.startDate,
+                    required: true,
+                    align: "RIGHT"
+                  ),
+                  /* For the Removal Column*/
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    value: #"SYSTEM_SYSRULES_richTextIcon"(
+                      icon: "close",
+                      altText: "delete " &amp; fv!index,
+                      caption: "Remove " &amp; fv!item.firstName &amp; " " &amp; fv!item.lastName,
+                      link: #"SYSTEM_SYSRULES_dynamicLink"(
+                        value: fv!index,
+                        saveInto: {
+                          a!save(
+                            local!employees,
+                            remove(local!employees, save!value)
+                          )
+                        }
+                      ),
+                      linkStyle: "STANDALONE",
+                      color: "NEGATIVE"
+                    )
+                  )
+                },
+                id: fv!index
+              )
+            ),
+            rowHeader: 1
+          )
+        }
+      ),
+      #"SYSTEM_SYSRULES_richTextDisplayField"(),
+      
+      #"SYSTEM_SYSRULES_paragraphField"(
+        label:"Comments"
+      )
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      secondaryButtons: { #"SYSTEM_SYSRULES_ButtonWidget"(
+        label: "Reject",
+        value: local!currentStep - 1,
+        saveInto: local!currentStep
+      )},
+      primaryButtons: {
+       
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: "APPROVE",
+          value: local!currentStep + 1,
+          saveInto: local!currentStep,
+          showWhen: or(local!currentStep = { 1, 2 }),
+          validate: true
+        )
+      }
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>isCancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>supportingDocuments</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_37992"/>
+    </history>
+</contentHaul>

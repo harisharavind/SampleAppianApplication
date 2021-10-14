@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dataStoreHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38038</versionUuid>
+    <dataStore>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38027</uuid>
+        <name>NAC DS</name>
+        <description>Datastore contains all the entities related to NAC</description>
+        <dataSourceKey>jdbc/Appian</dataSourceKey>
+        <adaptingExplicitSqlNames>false</adaptingExplicitSqlNames>
+        <autoUpdateSchema>false</autoUpdateSchema>
+        <entities>
+            <entity>
+                <uuid>cc1ce0df-e502-40d8-a39b-e6617830a5e4</uuid>
+                <name>taskAssignment</name>
+                <type>{urn:com:appian:types:NACTaskAssignment}NAC_TaskAssignment</type>
+            </entity>
+        </entities>
+    </dataStore>
+    <isPublished>true</isPublished>
+    <roleMap>
+        <role inherit="false" allowForAll="false" name="administrators">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_327</groupUuid>
+            </groups>
+        </role>
+        <role inherit="false" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38038"/>
+    </history>
+</dataStoreHaul>

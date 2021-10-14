@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>048eb116-1d97-48ee-8edc-3ebb59a47a7d</versionUuid>
+  <site a:uuid="af0199d4-6e33-42d0-9d27-22b9d0c40a99" name="NAC">
+    <description>Site used for NAC application</description>
+    <urlStub>nac</urlStub>
+    <page>
+      <staticName>HOME</staticName>
+      <description/>
+      <urlStub>home</urlStub>
+      <uiObject a:uuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_37984" xsi:type="a:ContentFreeformRule"/>
+      <iconId>f015</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>WIDE</pageWidth>
+    </page>
+    <page>
+      <staticName>SEARCH</staticName>
+      <description/>
+      <urlStub>search</urlStub>
+      <uiObject a:uuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38009" xsi:type="a:ContentFreeformRule"/>
+      <iconId>f002</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>WIDE</pageWidth>
+    </page>
+    <page>
+      <staticName>Report</staticName>
+      <description/>
+      <urlStub>report</urlStub>
+      <uiObject a:uuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38002" xsi:type="a:ContentFreeformRule"/>
+      <iconId>f012</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>WIDE</pageWidth>
+    </page>
+    <visibility>268435456</visibility>
+    <headerBackgroundColor>#17202b</headerBackgroundColor>
+    <selectedTabBackgroundColor>#1a2a3c</selectedTabBackgroundColor>
+    <faviconRef a:uuid="SYSTEM_CONTENT_SITES_DEFAULT_FAVICON" xsi:type="a:CollaborationDocument"/>
+    <logoRef a:uuid="SYSTEM_CONTENT_SITES_DEFAULT_LOGO" xsi:type="a:CollaborationDocument"/>
+    <accentColor>#69afdc</accentColor>
+    <showName>true</showName>
+    <tempoLinkVisibility>HIDDEN</tempoLinkVisibility>
+    <showRecordNews>false</showRecordNews>
+    <tasksInSitesVisibility>HIDDEN</tasksInSitesVisibility>
+    <buttonShape>ROUNDED</buttonShape>
+    <navigationBarStyle>STYLE1</navigationBarStyle>
+    <inputShape>SQUARED</inputShape>
+    <isSystem>false</isSystem>
+  </site>
+  <roleMap>
+    <role name="site_administrator">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_327</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="048eb116-1d97-48ee-8edc-3ebb59a47a7d"/>
+  </history>
+</siteHaul>

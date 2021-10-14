@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<processModelFolderHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_g-0000e6eb-1b28-8000-fc2f-7f0000014e7a_88</versionUuid>
+    <processModelFolder>
+        <name>NAC Process Models</name>
+        <uuid>_g-0000e6eb-1b28-8000-fc2f-7f0000014e7a_87</uuid>
+        <description>This folder contains all the process models related to NAC application</description>
+    </processModelFolder>
+    <roleMap>
+        <role name="ADMIN_OWNER">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role name="EDITOR">
+            <users/>
+            <groups/>
+        </role>
+        <role name="EXPLICIT_NONMEMBER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="VIEWER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="MANAGER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="INITIATOR">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_g-0000e6eb-1b28-8000-fc2f-7f0000014e7a_88"/>
+    </history>
+</processModelFolderHaul>

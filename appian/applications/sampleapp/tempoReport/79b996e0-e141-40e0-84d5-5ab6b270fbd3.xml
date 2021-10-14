@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tempoReportHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>e82d4f5d-6c4c-4563-b9fe-c34b493f81eb</versionUuid>
+    <tempoReport a:uuid="79b996e0-e141-40e0-84d5-5ab6b270fbd3" name="NAC Landing Page">
+        <a:description>Report to display landing page</a:description>
+        <a:uiExpr>=#"_a-0000e6eb-1b14-8000-9be1-011c48011c48_37984"()</a:uiExpr>
+        <a:urlStub>Nls1vw</a:urlStub>
+    </tempoReport>
+    <roleMap>
+        <role name="report_administrator">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_327</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="e82d4f5d-6c4c-4563-b9fe-c34b493f81eb"/>
+    </history>
+</tempoReportHaul>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38081</versionUuid>
+    <rule>
+        <name>NAC_uiSummaryDashboard</name>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38073</uuid>
+        <description>UI to display summary</description>
+        <parentUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37934</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  a!localVariables(
+    /* Defines whether or not to collapse the side nav */
+    local!collapseNav: false,
+    /* The selected navigation section */
+    local!activeCollapsibleNavSection: 1,
+    /* The navigation sections */
+    local!collapsibleNavSections: {
+      a!map(name: "Key Information", icon: "briefcase"),
+      a!map(name: "Contacts",     icon: "tasks"),
+      a!map(name: "Citi Legal Entities and Target Markets",  icon: "paper-plane"),
+      a!map(name: "Eligibility Criteria",  icon: "calendar")
+    },
+    {
+      #"SYSTEM_SYSRULES_columnsLayout"(
+        columns: {
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_forEach"(
+                items: local!collapsibleNavSections,
+                expression: if(
+                  local!collapseNav,
+                  {
+                    #"SYSTEM_SYSRULES_cardLayout"(contents:{#"SYSTEM_SYSRULES_paragraphField"(label:"",value: fv!index&amp;fv!item.name,
+                    readOnly:true),
+                    #"SYSTEM_SYSRULES_richTextDisplayField"(
+                      value: {
+                        #"SYSTEM_SYSRULES_richTextIcon"(
+                          icon: fv!item.icon,
+                          caption: fv!item.name,
+                          link: #"SYSTEM_SYSRULES_dynamicLink"(
+                            value: fv!index,
+                            saveInto: local!activeCollapsibleNavSection
+                          ),
+                          linkStyle: "STANDALONE",
+                          color: if(
+                            fv!index = local!activeCollapsibleNavSection,
+                            "ACCENT",
+                            "SECONDARY"
+                          ),
+                          size: "LARGE"
+                        )
+                      },
+                      align: "CENTER",
+                      accessibilityText: if(
+                        fv!index = local!activeCollapsibleNavSection,
+                        fv!item.name &amp; " " &amp; "selected",
+                        ""
+                      )
+                    )
+                    },
+                    showShadow: true(),
+                    style: "#fff"
+                    ),
+                    #"SYSTEM_SYSRULES_richTextDisplayField"()
+                  },
+                  #"SYSTEM_SYSRULES_cardLayout"(
+                    contents: #"SYSTEM_SYSRULES_sideBySideLayout"(
+                      items: {
+                        #"SYSTEM_SYSRULES_sideBySideItem"(
+                          item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                            labelPosition: "COLLAPSED",
+                            value: #"SYSTEM_SYSRULES_richTextIcon"(
+                              icon: fv!item.icon,
+                              color: if(
+                                fv!index = local!activeCollapsibleNavSection,
+                                "STANDARD",
+                                "SECONDARY"
+                              ),
+                              size: if(local!collapseNav, "LARGE", "MEDIUM")
+                            ),
+                            align: "LEFT"
+                          ),
+                          width: "MINIMIZE"
+                        ),
+                        #"SYSTEM_SYSRULES_sideBySideItem"(
+                          item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                            labelPosition: "COLLAPSED",
+                            value: #"SYSTEM_SYSRULES_richTextItem_v1"(
+                              text: fv!item.name,
+                              color: "ACCENT",
+                              size: "MEDIUM",
+                              style: if(
+                                fv!index = local!activeCollapsibleNavSection,
+                                "STRONG",
+                                "PLAIN"
+                              )
+                            )
+                          ),
+                          showWhen: not(local!collapseNav)
+                        )
+                      },
+                      alignVertical: "MIDDLE"
+                    ),
+                    link: #"SYSTEM_SYSRULES_dynamicLink"(
+                      value: fv!index,
+                      saveInto: local!activeCollapsibleNavSection
+                    ),
+                    style: if(
+                      fv!index = local!activeCollapsibleNavSection,
+                      "ACCENT",
+                      "NONE"
+                    ),
+                    showBorder: false,
+                    accessibilityText: if(
+                      fv!index = local!activeCollapsibleNavSection,
+                      fv!item.name &amp; " " &amp; "selected",
+                      ""
+                    )
+                  )
+                )
+              ),
+              #"SYSTEM_SYSRULES_richTextDisplayField"(
+                value: #"SYSTEM_SYSRULES_richTextIcon"(
+                  icon: if(
+                    local!collapseNav,
+                    "angle-double-right",
+                    "angle-double-left"
+                  ),
+                  caption: if(
+                    local!collapseNav,
+                    "Expand navigation bar",
+                    "Collapse navigation bar"
+                  ),
+                  link: #"SYSTEM_SYSRULES_dynamicLink"(
+                    value: not(local!collapseNav),
+                    saveInto: local!collapseNav
+                  ),
+                  linkStyle: "STANDALONE",
+                  color: "SECONDARY",
+                  size: "MEDIUM"
+                ),
+                align: "CENTER"
+              ),
+              /* This card is used to set a minimum height on the column so that the *
+               * divider takes up more screen space when there is minimal content.   *
+               * Once content is added to the main column, this can be removed.      */
+              #"SYSTEM_SYSRULES_cardLayout"(
+                height: "TALL",
+                showWhen: not(#"SYSTEM_SYSRULES_isPageWidth"("PHONE")),
+                showBorder: false
+              )
+            },
+            width: if(local!collapseNav, "EXTRA_NARROW", "NARROW")
+          ),
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              /* Conditionally display selected navigation section.       *
+               * Sections are created individually here because they will *
+               * have varying contents, so if you change the list in      *
+               * local!collapisbleNavSections, you will need to make sure *
+               * the list of sections here is the correct length.         */
+              choose(
+                local!activeCollapsibleNavSection,
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(
+                  label: index(
+                    local!collapsibleNavSections.name,
+                    local!activeCollapsibleNavSection,
+                    ""
+                  ),
+                  contents: {}
+                ),
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(
+                  label: index(
+                    local!collapsibleNavSections.name,
+                    local!activeCollapsibleNavSection,
+                    ""
+                  ),
+                  contents: {}
+                ),
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(
+                  label: index(
+                    local!collapsibleNavSections.name,
+                    local!activeCollapsibleNavSection,
+                    ""
+                  ),
+                  contents: {}
+                ),
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(
+                  label: index(
+                    local!collapsibleNavSections.name,
+                    local!activeCollapsibleNavSection,
+                    ""
+                  ),
+                  contents: {}
+                ),
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(
+                  label: index(
+                    local!collapsibleNavSections.name,
+                    local!activeCollapsibleNavSection,
+                    ""
+                  ),
+                  contents: {}
+                ),
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(
+                  label: index(
+                    local!collapsibleNavSections.name,
+                    local!activeCollapsibleNavSection,
+                    ""
+                  ),
+                  contents: {}
+                )
+              )
+            }
+          )
+        },
+        spacing: "SPARSE",
+        showDividers: true
+      )
+    }
+  )
+}</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38081"/>
+    </history>
+</contentHaul>

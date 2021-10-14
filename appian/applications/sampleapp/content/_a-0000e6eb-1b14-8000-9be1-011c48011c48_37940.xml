@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37977</versionUuid>
+    <rule>
+        <name>NAC_uiInitiateProposal</name>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37940</uuid>
+        <description>UI to capture proposal details</description>
+        <parentUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37934</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localVariables(
+  local!activeStep: 2,
+  {
+    #"SYSTEM_SYSRULES_columnsLayout"(
+      columns: {
+        #"SYSTEM_SYSRULES_columnLayout"(
+          contents: {
+            #"SYSTEM_SYSRULES_cardLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(),
+                #"SYSTEM_SYSRULES_sectionLayout_v1"(),
+                #"SYSTEM_SYSRULES_forEach"(
+                  items: {
+                    "Key Information",
+                    "Contacts",
+                    "Eligibility Criteria",
+                    "Supporting Documents"
+                  },
+                  expression: {
+                    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+                      contents: {
+                        #"SYSTEM_SYSRULES_sideBySideLayout"(
+                          items: {
+                            #"SYSTEM_SYSRULES_sideBySideItem"(
+                              item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                labelPosition: "COLLAPSED",
+                                value: #"SYSTEM_SYSRULES_richTextIcon"(
+                                  icon: if(fv!index = local!activeStep, "chevron-right",
+                                  if(fv!index &lt; local!activeStep, "check",
+                                  "circle-o")
+                                  ),
+                                  color: if(fv!index &lt;= local!activeStep, "POSITIVE", "SECONDARY"),
+                                  size: "MEDIUM"
+                                )
+                              )
+                            ),
+                            #"SYSTEM_SYSRULES_sideBySideItem"(
+                              item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                labelPosition: "COLLAPSED",
+                                value: #"SYSTEM_SYSRULES_richTextItem_v1"(
+                                  text: fv!item,
+                                  size: "MEDIUM",
+                                  style: if(fv!index = local!activeStep, "STRONG", "PLAIN")
+                                )
+                              ),
+                              width: "10X"
+                            )
+                          }
+                        )
+                      }
+                    ),
+                    #"SYSTEM_SYSRULES_sectionLayout_v1"(),
+                    #"SYSTEM_SYSRULES_sectionLayout_v1"()
+                  }
+                )
+              },
+              style: "#fbfbfb",
+              height: "AUTO"
+            )
+          },
+          width: "MEDIUM"
+        ),
+        #"SYSTEM_SYSRULES_columnLayout"(),
+        #"SYSTEM_SYSRULES_columnLayout"(
+          contents: {
+            #"SYSTEM_SYSRULES_sectionLayout_v1"(
+              contents: {
+                #"SYSTEM_SYSRULES_richTextDisplayField"(
+                  labelPosition: "COLLAPSED",
+                  value: {
+                    #"SYSTEM_SYSRULES_richTextItem_v1"(
+                      text: "Key Information",
+                      size: "LARGE"
+                    )
+                  }
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_sectionLayout_v1"(
+              contents: {
+                #"SYSTEM_SYSRULES_richTextDisplayField"(
+                  labelPosition: "COLLAPSED",
+                  value: {
+                    #"SYSTEM_SYSRULES_richTextItem_v1"(
+                      text: "NAME",
+                      color: "SECONDARY",
+                      style: "STRONG"
+                    )
+                  }
+                ),
+                #"SYSTEM_SYSRULES_sideBySideLayout"(
+                  items: {
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "First Name"
+                      ),
+                      width: "4X"
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "M.I."
+                      )
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "Last Name"
+                      ),
+                      width: "4X"
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "Suffix"
+                      )
+                    )
+                  },
+                  spacing: "DENSE"
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_sectionLayout_v1"(
+              contents: {
+                #"SYSTEM_SYSRULES_richTextDisplayField"(
+                  labelPosition: "COLLAPSED",
+                  value: {
+                    #"SYSTEM_SYSRULES_richTextItem_v1"(
+                      text: "CONTACT",
+                      color: "SECONDARY",
+                      style: "STRONG"
+                    )
+                  }
+                ),
+                #"SYSTEM_SYSRULES_sideBySideLayout"(
+                  items: {
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "Email Address"
+                      )
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "Confirm Email Address"
+                      )
+                    )
+                  }
+                ),
+                #"SYSTEM_SYSRULES_sideBySideLayout"(
+                  items: {
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "Telephone"
+                      )
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_radioButtonField"(
+                        label: "Type",
+                        choiceLabels: {"Mobile", "Home", "Office"},
+                        choiceValues: {1, 2, 3},
+                        value: 1,
+                        choiceLayout: "COMPACT"
+                      )
+                    )
+                  }
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_sectionLayout_v1"(
+              contents: {
+                #"SYSTEM_SYSRULES_richTextDisplayField"(
+                  labelPosition: "COLLAPSED",
+                  value: {
+                    #"SYSTEM_SYSRULES_richTextItem_v1"(
+                      text: "MAILING ADDRESS",
+                      color: "SECONDARY",
+                      style: "STRONG"
+                    )
+                  }
+                ),
+                #"SYSTEM_SYSRULES_sideBySideLayout"(
+                  items: {
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "Street Address or PO Box"
+                      ),
+                      width: "2X"
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "Apartment or Unit #"
+                      )
+                    )
+                  }
+                ),
+                #"SYSTEM_SYSRULES_sideBySideLayout"(
+                  items: {
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "City"
+                      ),
+                      width: "3X"
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_dropdownField_v1"(
+                        label: "State",
+                        placeholder: "Select State",
+                        choiceLabels: {"DC", "MD", "VA"},
+                        choiceValues: {1, 2, 3}
+                      )
+                    ),
+                    #"SYSTEM_SYSRULES_sideBySideItem"(
+                      item: #"SYSTEM_SYSRULES_textField"(
+                        label: "ZIP Code"
+                      ),
+                      width: "2X"
+                    )
+                  }
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_columnsLayout"(
+              columns: {
+                #"SYSTEM_SYSRULES_columnLayout"(
+                  contents: {
+                    #"SYSTEM_SYSRULES_ButtonArrayLayout"(
+                      buttons: {
+                        #"SYSTEM_SYSRULES_ButtonWidget"(
+                          label: "Go Back",
+                          size: "LARGE"
+                        )
+                      },
+                      align: "START",
+                      marginBelow: "NONE"
+                    )
+                  }
+                ),
+                #"SYSTEM_SYSRULES_columnLayout"(
+                  contents: {
+                    #"SYSTEM_SYSRULES_ButtonArrayLayout"(
+                      buttons: {
+                        #"SYSTEM_SYSRULES_ButtonWidget"(
+                          label: "Continue",
+                          size: "LARGE",
+                          style: "PRIMARY",
+                          submit: true
+                        )
+                      },
+                      align: "END",
+                      marginBelow: "NONE"
+                    )
+                  }
+                )
+              }
+            )
+          },
+          width: "WIDE"
+        ),
+        #"SYSTEM_SYSRULES_columnLayout"()
+      }
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>isCancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>supportingDocuments</name>
+            <type>
+                <name>CollaborationDocument?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_37977"/>
+    </history>
+</contentHaul>

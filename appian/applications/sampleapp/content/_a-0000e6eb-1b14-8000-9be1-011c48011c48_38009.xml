@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38025</versionUuid>
+    <rule>
+        <name>NAC_uiGlobalSearch</name>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38009</uuid>
+        <description>UI to display the global search report</description>
+        <parentUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37934</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  #"SYSTEM_SYSRULES_gridField_v1"(
+    labelPosition: "ABOVE",
+    data: #"urn:appian:record-type:v1:8194583f-c93d-4f4b-81f9-175033d045e6",
+    columns: {
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Name",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/43c45737-c867-4e9f-9515-42d6cee1d0f0",
+        value: #"SYSTEM_SYSRULES_linkField"(
+          links: {
+            #"SYSTEM_SYSRULES_recordLink"(
+              label: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/43c45737-c867-4e9f-9515-42d6cee1d0f0"],
+              recordType: #"urn:appian:record-type:v1:8194583f-c93d-4f4b-81f9-175033d045e6",
+              identifier: fv!identifier
+            )
+          }
+        )
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Contact Name",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/62eae920-426b-473d-8803-1f43bdb15c38",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/62eae920-426b-473d-8803-1f43bdb15c38"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Contact Email",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/ab07da7b-261d-493f-925b-131e8479076a",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/ab07da7b-261d-493f-925b-131e8479076a"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Phone Number",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/d52adfff-10f3-46b2-91e5-f2b79423f481",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/d52adfff-10f3-46b2-91e5-f2b79423f481"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Status",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/3746c3ca-d6f5-4e3d-902d-5910c898feb5",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/3746c3ca-d6f5-4e3d-902d-5910c898feb5"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Priority",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/33d8ee5f-0d90-42a4-8bfb-62cbc6b3ba23",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/33d8ee5f-0d90-42a4-8bfb-62cbc6b3ba23"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Region",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/7e4ccd33-ea93-4f2e-bbc3-45ba2b5b05f1",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/7e4ccd33-ea93-4f2e-bbc3-45ba2b5b05f1"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Address",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/6d103536-f351-4484-84c4-676698d72362",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/6d103536-f351-4484-84c4-676698d72362"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Industry",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/857845a2-d16f-451e-ba38-44c877e3cd57",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/857845a2-d16f-451e-ba38-44c877e3cd57"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Stock Ticker",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/52490323-094e-4783-8500-1e12e4466c49",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/52490323-094e-4783-8500-1e12e4466c49"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Customer Since",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/094388e5-40a6-4afe-93c1-0a1f89e457d4",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/094388e5-40a6-4afe-93c1-0a1f89e457d4"],
+        align: "END"
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Contract Renewal Date",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/f5a5c149-2553-4200-bd99-4fee552af414",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/f5a5c149-2553-4200-bd99-4fee552af414"],
+        align: "END"
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Contract Annual Value",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/6e120d46-3b3d-4187-8f62-e3f84569a8e3",
+        value: dollar(
+          fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/6e120d46-3b3d-4187-8f62-e3f84569a8e3"]
+        ),
+        align: "END"
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Market Cap",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/4f399946-fb44-4264-89ea-c34229dc57a9",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/4f399946-fb44-4264-89ea-c34229dc57a9"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Stock Price",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/74713e4d-fb1d-45c5-ad7e-9c5b7d5c8f11",
+        value: if(
+          isnull(
+            fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/74713e4d-fb1d-45c5-ad7e-9c5b7d5c8f11"]
+          ),
+          fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/74713e4d-fb1d-45c5-ad7e-9c5b7d5c8f11"],
+          fixed(
+            fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/74713e4d-fb1d-45c5-ad7e-9c5b7d5c8f11"],
+            2
+          )
+        ),
+        align: "END"
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Active",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/cbe3100f-c8bc-451c-a06b-895552221109",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/cbe3100f-c8bc-451c-a06b-895552221109"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Created On",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/13a11d8a-001f-4d1b-bc12-b3c73e6f24ed",
+        value: if(
+          isnull(
+            fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/13a11d8a-001f-4d1b-bc12-b3c73e6f24ed"]
+          ),
+          fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/13a11d8a-001f-4d1b-bc12-b3c73e6f24ed"],
+          datetext(
+            fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/13a11d8a-001f-4d1b-bc12-b3c73e6f24ed"],
+            "default"
+          )
+        ),
+        align: "END"
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Created By",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/e154f27b-eca6-479a-a8df-e3e810493fed",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/e154f27b-eca6-479a-a8df-e3e810493fed"]
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Updated On",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/1fb5dbda-d57a-4075-8926-78b851bd7728",
+        value: if(
+          isnull(
+            fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/1fb5dbda-d57a-4075-8926-78b851bd7728"]
+          ),
+          fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/1fb5dbda-d57a-4075-8926-78b851bd7728"],
+          datetext(
+            fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/1fb5dbda-d57a-4075-8926-78b851bd7728"],
+            "default"
+          )
+        ),
+        align: "END"
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label: "Updated By",
+        sortField: #"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/3412a55a-7ad2-4d75-8ac0-cd121e05706c",
+        value: fv!row[#"urn:appian:record-field:v1:8194583f-c93d-4f4b-81f9-175033d045e6/3412a55a-7ad2-4d75-8ac0-cd121e05706c"]
+      )
+    },
+    validations: {},
+    refreshAfter: "RECORD_ACTION",
+    showSearchBox: true,
+    showRefreshButton: true
+  )
+}</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38025"/>
+    </history>
+</contentHaul>

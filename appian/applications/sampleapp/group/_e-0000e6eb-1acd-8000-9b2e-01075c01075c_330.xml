@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<groupHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_331</versionUuid>
+    <group>
+        <name>NAC All Users</name>
+        <securityMap>SECURITYMAP_TEAM</securityMap>
+        <uuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_330</uuid>
+        <groupTypeUuid>SYSTEM_GROUP_TYPE_CUSTOM</groupTypeUuid>
+        <description>This group contains all the business end users to access the NAC application.
+Responsibilities:
+Business users who access the NAC application to perform the tasks</description>
+        <delegatedCreation>false</delegatedCreation>
+        <memberPolicy>MEMBERPOLICY_CLOSED</memberPolicy>
+        <viewingPolicy>VIEWINGPOLICY_LOW</viewingPolicy>
+        <attributes/>
+    </group>
+    <members>
+        <users/>
+        <groups/>
+    </members>
+    <admins>
+        <users>
+            <userUuid>chandhini.r@scadea.com</userUuid>
+        </users>
+        <groups/>
+    </admins>
+    <ruleSet/>
+    <history>
+        <historyInfo versionUuid="_e-0000e6eb-1acd-8000-9b2e-01075c01075c_331"/>
+    </history>
+</groupHaul>

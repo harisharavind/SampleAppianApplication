@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tempoReportHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>6d3509f9-29a5-4305-bdcb-72957f6c4ab5</versionUuid>
+    <tempoReport a:uuid="ba72d24c-73ed-48fd-8403-d6934dc92672" name="Global Search">
+        <a:description>Search Report</a:description>
+        <a:uiExpr>=#"_a-0000e6eb-1b14-8000-9be1-011c48011c48_37984"()</a:uiExpr>
+        <a:urlStub>emraKg</a:urlStub>
+    </tempoReport>
+    <roleMap>
+        <role name="report_administrator">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e6eb-1acd-8000-9b2e-01075c01075c_327</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="6d3509f9-29a5-4305-bdcb-72957f6c4ab5"/>
+    </history>
+</tempoReportHaul>

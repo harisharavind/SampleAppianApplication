@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38021</versionUuid>
+    <rule>
+        <name>NAC_uiTaskReport</name>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38002</uuid>
+        <description>Interface for supervisor task report.</description>
+        <parentUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37934</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localVariables(
+  local!defaultSemester: 1,
+  #"SYSTEM_SYSRULES_headerContentLayout"(
+    contents: {
+      #"SYSTEM_SYSRULES_sideBySideLayout"(
+        items: {
+          #"SYSTEM_SYSRULES_sideBySideItem"(
+            item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+              labelPosition: "COLLAPSED",
+              value: {
+                #"SYSTEM_SYSRULES_richTextHeader"(text: "Undergraduate Admissions" &amp; " ")
+              }
+            ),
+            width: "MINIMIZE"
+          ),
+          #"SYSTEM_SYSRULES_sideBySideItem"(
+            item: #"SYSTEM_SYSRULES_dropdownField_v1"(
+              label: "Semester Filter",
+              labelPosition: "COLLAPSED",
+              placeholder: "--- " &amp; "Select Semester" &amp; " ---",
+              choiceLabels: {
+                "Fall 2020",
+                "Spring 2020",
+                "Fall 2019",
+                "Spring 2019"
+              },
+              choiceValues: { 1, 2, 3, 4 },
+              value: local!defaultSemester
+            ),
+            width: "MINIMIZE"
+          )
+        },
+        alignVertical: "MIDDLE"
+      ),
+      #"SYSTEM_SYSRULES_columnsLayout"(
+        columns: {
+          /* Top left bar chart */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(
+                        text: "1500",
+                        color: "#3AA5D1",
+                        size: "MEDIUM",
+                        style: "STRONG"
+                      ),
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(
+                        text: " " &amp; "Applications Received",
+                        size: "MEDIUM",
+                        style: "STRONG"
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_barChartField"(
+                    labelPosition: "COLLAPSED",
+                    categories: { "Applications" },
+                    series: {
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Pending", data: { 750 }),
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Declined", data: { 450 }),
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Accepted", data: { 300 })
+                    },
+                    stacking: "NORMAL",
+                    showLegend: true,
+                    showTooltips: true,
+                    colorScheme: "PARACHUTE",
+                    height: "MICRO",
+                    xAxisStyle: "NONE",
+                    yAxisStyle: "NONE"
+                  )
+                },
+                height: "AUTO",
+                /*style: "NAVY_SCHEME",*/
+                padding: "STANDARD",
+                marginBelow: "STANDARD",
+                showBorder: false
+              )
+            }
+          ),
+          /* Top middle column chart */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(
+                        text: "200",
+                        color: "#3AA5D1",
+                        size: "MEDIUM",
+                        style: "STRONG"
+                      ),
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(
+                        text: " " &amp; "Applications Reviewed Weekly",
+                        size: "MEDIUM",
+                        style: "STRONG"
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_sideBySideLayout"(
+                    items: {
+                      #"SYSTEM_SYSRULES_sideBySideItem"(
+                        #"SYSTEM_SYSRULES_columnChartField"(
+                          categories: {
+                            "Week 1",
+                            "Week 2",
+                            "Week 3",
+                            "Week 4",
+                            "Week 5"
+                          },
+                          series: {
+                            #"SYSTEM_SYSRULES_chartSeries"(
+                              label: "Not Reviewed",
+                              data: { 350, 400, 600, 650, 700 },
+                              color: "#d8d8d8"
+                            ),
+                            #"SYSTEM_SYSRULES_chartSeries"(
+                              label: "Reviewed",
+                              data: { 0, 200, 400, 600, 800 },
+                              color: "#3aa5d1"
+                            )
+                          },
+                          yAxisMax: 1500,
+                          stacking: "NORMAL",
+                          showLegend: false,
+                          showDataLabels: false,
+                          labelPosition: "COLLAPSED",
+                          colorScheme: "PARACHUTE",
+                          height: "MICRO",
+                          xAxisStyle: "NONE",
+                          yAxisStyle: "NONE"
+                        )
+                      ),
+                      #"SYSTEM_SYSRULES_sideBySideItem"(
+                        item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                          labelPosition: "COLLAPSED",
+                          value: {
+                            #"SYSTEM_SYSRULES_richTextIcon"(
+                              icon: "circle",
+                              color: "#D8D8D8",
+                              size: "SMALL"
+                            ),
+                            " ",
+                            #"SYSTEM_SYSRULES_richTextItem_v1"(text: "Not Reviewed", size: "SMALL"),
+                            char(10),
+                            #"SYSTEM_SYSRULES_richTextIcon"(
+                              icon: "circle",
+                              color: "#3aa5d1",
+                              size: "SMALL"
+                            ),
+                            " ",
+                            #"SYSTEM_SYSRULES_richTextItem_v1"(text: "Reviewed", size: "SMALL")
+                          }
+                        ),
+                        width: "MINIMIZE"
+                      )
+                    },
+                    alignVertical: "MIDDLE",
+                    stackWhen: {
+                      "PHONE",
+                      "TABLET_PORTRAIT",
+                      "TABLET_LANDSCAPE"
+                    }
+                  )
+                },
+                height: "AUTO",
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                marginBelow: "STANDARD",
+                showBorder: false
+              )
+            }
+          ),
+          /* Top right rich text display */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(
+                        text: "Early Decision Deadline",
+                        size: "MEDIUM",
+                        style: "STRONG"
+                      )
+                    },
+                    align: "LEFT"
+                  ),
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(text: "Nov. 1, 2020", size: "LARGE"),
+                      char(10),
+                      char(10),
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(
+                        text: "3 days remaining",
+                        color: "NEGATIVE",
+                        size: "MEDIUM"
+                      )
+                    },
+                    align: "LEFT"
+                  )
+                },
+                height: "AUTO",
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                marginBelow: "STANDARD",
+                showBorder: false
+              )
+            },
+            width: "NARROW_PLUS"
+          )
+        },
+        stackWhen: { "TABLET_PORTRAIT", "PHONE" }
+      ),
+      #"SYSTEM_SYSRULES_columnsLayout"(
+        columns: {
+          /* Middle left bar chart */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextHeader"(
+                        text: "Accepted Students by Gender and Race",
+                        size: "SMALL"
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_barChartField"(
+                    label: "Accepted Students by Gender and Race",
+                    labelPosition: "COLLAPSED",
+                    categories: { "Male", "Female" },
+                    series: {
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Other", data: { 301, 199 }),
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Hispanic/Latino", data: { 168, 197 }),
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Asian", data: { 270, 316 }),
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "African American", data: { 291, 340 }),
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "White", data: { 1277, 1491 })
+                    },
+                    stacking: "NORMAL",
+                    showLegend: true,
+                    showDataLabels: false,
+                    colorScheme: "PARACHUTE",
+                    height: "SHORT",
+                    xAxisStyle: "STANDARD",
+                    yAxisStyle: "NONE"
+                  )
+                },
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                showBorder: false
+              )
+            }
+          ),
+          /* Middle column chart */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  {
+                    #"SYSTEM_SYSRULES_richTextDisplayField"(
+                      labelPosition: "COLLAPSED",
+                      value: {
+                        #"SYSTEM_SYSRULES_richTextHeader"(text: "Applicant Statuses", size: "SMALL")
+                      }
+                    ),
+                    #"SYSTEM_SYSRULES_columnChartField"(
+                      label: "Applicant Statuses",
+                      categories: { "Pending", "Accepted", "Declined" },
+                      series: {
+                        #"SYSTEM_SYSRULES_chartSeries"(
+                          label: "Total Applicants",
+                          data: { 1050, 436, 215 }
+                        )
+                      },
+                      yAxisMax: 1050,
+                      showLegend: false,
+                      showDataLabels: true(),
+                      labelPosition: "COLLAPSED",
+                      colorScheme: "PARACHUTE",
+                      height: "SHORT",
+                      yAxisStyle: "MINIMAL"
+                    )
+                  }
+                },
+                height: "AUTO",
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                marginBelow: "STANDARD",
+                showBorder: false
+              )
+            }
+          ),
+          /* Middle right gauge */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextHeader"(text: "Funds Used (USD)", size: "SMALL")
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_gaugeField"(
+                    label: "Funds Used (USD)",
+                    labelPosition: "COLLAPSED",
+                    percentage: 47.0,
+                    primaryText: "663k",
+                    secondaryText: "/ 1.4m",
+                    color: "#3AA5D1",
+                    size: "MEDIUM"
+                  )
+                },
+                height: "AUTO",
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                marginBelow: "STANDARD",
+                showBorder: false
+              )
+            }
+          )
+        },
+        stackWhen: { "TABLET_PORTRAIT", "PHONE" }
+      ),
+      #"SYSTEM_SYSRULES_columnsLayout"(
+        columns: {
+          /* Bottom left column chart */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextHeader"(
+                        text: "Applicant Residencies",
+                        size: "SMALL"
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_barChartField"(
+                    label: "Applicant Residencies",
+                    labelPosition: "COLLAPSED",
+                    categories: {
+                      "In-State Freshmen",
+                      "Out-of-State Freshmen",
+                      "In-State Transfers",
+                      "Other Campus Transfers",
+                      "International",
+                      "Out-of-State Transfers"
+                    },
+                    series: {
+                      #"SYSTEM_SYSRULES_chartSeries"(
+                        label: "Total Applicants",
+                        data: { 750, 400, 135, 135, 103, 80 }
+                      )
+                    },
+                    stacking: "NONE",
+                    showLegend: false,
+                    showTooltips: true,
+                    colorScheme: "PARACHUTE",
+                    height: "SHORT",
+                    xAxisStyle: "STANDARD",
+                    yAxisStyle: "STANDARD"
+                  )
+                },
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                showBorder: false
+              )
+            }
+          ),
+          /* Bottom middle donut chart */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextHeader"(
+                        text: "Available Funds (USD)",
+                        size: "SMALL"
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_pieChartField"(
+                    label: "Available Funds (USD)",
+                    labelPosition: "COLLAPSED",
+                    series: {
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Financial Aid", data: 980000),
+                      #"SYSTEM_SYSRULES_chartSeries"(label: "Scholarships", data: 280000)
+                    },
+                    showDataLabels: true,
+                    showAsPercentage: false,
+                    colorScheme: "PARACHUTE",
+                    style: "DONUT",
+                    seriesLabelStyle: "LEGEND",
+                    height: "SHORT"
+                  )
+                },
+                height: "AUTO",
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                marginBelow: "STANDARD",
+                showBorder: false
+              )
+            }
+          ),
+          /* Bottom right grid */
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents:
+                {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    labelPosition: "COLLAPSED",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextHeader"(
+                        text: "Breakdown of Available Funds",
+                        size: "SMALL"
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_gridField_v1"(
+                    label: "Breakdown of Available Funds",
+                    labelPosition: "COLLAPSED",
+                    data: todatasubset(
+                      {
+                        {
+                          id: 1,
+                          type: "Financial Aid",
+                          name: "Grants",
+                          totalAmount: "588000"
+                        },
+                        {
+                          id: 2,
+                          type: "Financial Aid",
+                          name: "Loans",
+                          totalAmount: "392000"
+                        },
+                        {
+                          id: 3,
+                          type: "Scholarship",
+                          name: "Academic Scholarships",
+                          totalAmount: "168000"
+                        },
+                        {
+                          id: 4,
+                          type: "Scholarship",
+                          name: "Athletic Scholarships",
+                          totalAmount: "112000"
+                        }
+                      },
+                      fv!pagingInfo
+                    ),
+                    columns: {
+                      #"SYSTEM_SYSRULES_gridColumn"(
+                        label: "Type of Aid",
+                        value: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                          value: {
+                            #"SYSTEM_SYSRULES_richTextIcon"(
+                              icon: "dot-circle-o",
+                              caption: fv!row.type,
+                              color: if(
+                                tostring(fv!row.type) = "Financial Aid",
+                                "#e65f8e",
+                                "#a86bd1"
+                              ),
+                              size: "SMALL"
+                            ),
+                            " ",
+                            fv!row.name
+                          }
+                        )
+                      ),
+                      #"SYSTEM_SYSRULES_gridColumn"(
+                        label: "Funds",
+                        value: #"SYSTEM_SYSRULES_richTextDisplayField"(value: "$" &amp; fv!row.totalAmount / 1000 &amp; "k")
+                      )
+                    },
+                    initialSorts: #"SYSTEM_SYSRULES_sortInfo"(field: "totalAmount", ascending: false),
+                    spacing: "STANDARD",
+                    borderStyle: "LIGHT",
+                    shadeAlternateRows: false
+                  )
+                },
+                height: "AUTO",
+                /*style: "CHARCOAL_SCHEME",*/
+                padding: "STANDARD",
+                marginBelow: "STANDARD",
+                showBorder: false
+              )
+            }
+          )
+        },
+        stackWhen: {"TABLET_PORTRAIT", "PHONE"}
+      )
+    },
+    backgroundColor: "TRANSPARENT"
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38021"/>
+    </history>
+</contentHaul>

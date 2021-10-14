@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_38017</versionUuid>
+    <rule>
+        <name>NAC_uiLandingPage</name>
+        <uuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37984</uuid>
+        <description>UI to display landing page</description>
+        <parentUuid>_a-0000e6eb-1b14-8000-9be1-011c48011c48_37934</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_headerContentLayout"(
+  header: {
+    #"_a-0000e594-4277-8000-9bc5-011c48011c48_184129"(
+      backgroundColor: "#083d5c"
+    )
+  },
+  contents: {
+    /* On mobile, we render the KPIs in a box layout, so the users have the option to collapse the charts */
+    if(
+      #"SYSTEM_SYSRULES_isPageWidth"({"PHONE", "TABLET_PORTRAIT", "TABLET_LANDSCAPE"}),
+      #"SYSTEM_SYSRULES_boxLayout"(
+        label: "Case Management KPIs",
+        isCollapsible: true,
+        style: "#083d5c",
+        marginBelow: "STANDARD",
+        contents: #"_a-0000e5de-333f-8000-9bc4-011c48011c48_41247"()
+      ),
+      #"_a-0000e5de-333f-8000-9bc4-011c48011c48_41247"()
+    ),
+    #"SYSTEM_SYSRULES_richTextDisplayField"(
+      value: {
+        #"SYSTEM_SYSRULES_richTextItem_v1"(
+          text: upper("Orders"),
+          color: "SECONDARY",
+          style: "STRONG",
+          size: "MEDIUM"
+        )
+      }
+    ),
+    #"SYSTEM_SYSRULES_cardLayout"(
+      contents: {
+        #"_a-0000e594-4277-8000-9bc5-011c48011c48_182193"()
+      },
+      showBorder: false
+    )
+  },
+  backgroundColor: "TRANSPARENT"
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>chandhini.r@scadea.com</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6eb-1b14-8000-9be1-011c48011c48_38017"/>
+    </history>
+</contentHaul>
